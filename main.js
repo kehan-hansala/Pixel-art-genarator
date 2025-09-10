@@ -1,4 +1,4 @@
-let container = document.querySelector(".container");
+let container = document.getElementById("grid-space");
 let gridButton = document.getElementById("submit-grid");
 let clearGridButton = document.getElementById("clear-grid");
 let gridWidth = document.getElementById("width-rang");
@@ -30,7 +30,7 @@ let erase = false;
 const isTouchDevice = () =>{
     try {
         document.createElement("TouchEvent");
-        deviceType: "touch";
+        deviceType ="touch";
         return true;
     }catch (e) {
         deviceType ="mouse";
@@ -94,6 +94,29 @@ function checker(elementId) {
         }
     });
 }
+clearGridButton.addEventListener("click", () =>{
+    container.innerHTML ="";
+});
+eraseBtn.addEventListener("click", () =>{
+    erase = true;
+});
+paintBtn.addEventListener("click", () =>{
+    erase = false;
+});
+gridWidth.addEventListener("input", () =>{
+    widthValue.innerHTML = gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
+});
+gridHeight.addEventListener("input", () =>{
+    heightValue.innerHTML = gridHeight.value < 9 ? `0${gridHeight.value}` : gridHeight.value;
+});
+window.onload = () =>{
+    gridHeight.value = 10;
+    gridWidth.value = 10;
+
+    widthValue.innerHTML = "10";
+    heightValue.innerHTML = "10";
+};
+
 
 
 
